@@ -1,11 +1,11 @@
 # Main CMake file
 
-#! CMake minimum version. Make that your current CMake version is greater than this.
+#! CMake minimum version. Make sure that your current CMake version is greater than this.
 cmake_minimum_required(VERSION 3.31.4)
 
 # Project name, version and languages
 #! Change the project name and version here
-project(MY_PROJECT VERSION 0.0.0 LANGUAGES C CXX)
+project(stringsAlgorithms VERSION 0.0.0 LANGUAGES C CXX)
 
 # Configure build options
 set(CMAKE_CXX_STANDARD 23)
@@ -14,6 +14,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Create binary outputs at ./build/bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# Libraries
+set(stringAlgos STRING_ALGOS)
 
 # Subdirectories
 add_subdirectory(config)
