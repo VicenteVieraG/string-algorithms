@@ -1,11 +1,7 @@
 # Main CMake file
+cmake_minimum_required(VERSION 3.31.5)
 
-#! CMake minimum version. Make sure that your current CMake version is greater than this.
-cmake_minimum_required(VERSION 3.31.4)
-
-# Project name, version and languages
-#! Change the project name and version here
-project(stringsAlgorithms VERSION 0.0.0 LANGUAGES C CXX)
+project(stringsAlgorithms VERSION 0.1.2 LANGUAGES C CXX)
 
 # Configure build options
 set(CMAKE_CXX_STANDARD 23)
