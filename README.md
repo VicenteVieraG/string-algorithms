@@ -19,4 +19,4 @@ cmake ..
 cmake --build .
 ```
 
-The project structure is not very complex. Each algorithm is built as a library and then linked to the main project. All libraries consist of an `hpp` header file and a `cpp` source file. Some algorithms may use some dependencies from the utils folder. This structure makes it easy to just copy and paste the code for your own project or either build just the algorithms you need.
+The project structure is not very complex. All the algorithms are bundled in a single library that is linked to the main executable. Each algorithm consist of an `hpp` header file and a `cpp` source file. This arrangement makes it easy to just copy and paste the code for each algorithm so you do not need to build all the library.

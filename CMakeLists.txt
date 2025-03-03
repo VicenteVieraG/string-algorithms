@@ -1,7 +1,7 @@
 # Main CMake file
 cmake_minimum_required(VERSION 3.31.5)
 
-project(stringsAlgorithms VERSION 0.1.2 LANGUAGES C CXX)
+project(stringsAlgorithms VERSION 0.1.3 LANGUAGES C CXX)
 
 # Configure build options
 set(CMAKE_CXX_STANDARD 23)

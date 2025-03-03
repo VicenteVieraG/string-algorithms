@@ -13,7 +13,7 @@ std::vector<unsigned int> LPSArray(const std::string& pattern){
     unsigned int i = 1; // Pattern index. Index 0 has no self suffix nor prefix.
 
     while(i < patternSize){
-        if(pattern[length] == pattern[i]) LPS[i] = ++length;
+        if(pattern[i] == pattern[length]) LPS[i] = ++length;
         else if(length = LPS[length ? length - 1 : 0]; length > 0) continue;
 
         i++;
@@ -23,26 +23,27 @@ std::vector<unsigned int> LPSArray(const std::string& pattern){
 }
 
 std::vector<unsigned int> KMP(const std::string& pattern, const std::string& text){
-    if(pattern.empty() || text.empty()) return std::vector<unsigned int>(0);
+    if(pattern.empty() || text.empty() || pattern.size() > text.size())
+        return std::vector<unsigned int>(0);
 
     const std::vector<unsigned int> LPS = LPSArray(pattern);
     const std::size_t patternSize = pattern.size();
     const std::size_t textSize = text.size();
-    std::vector<unsigned int> ocurrences;
+    std::vector<unsigned int> occurrences;
     unsigned int i = 0;
     unsigned int j = 0;
 
     while(i < textSize){
         if(text[i] == pattern[j]){
             if(j == patternSize - 1){ // Pattern found
-                ocurrences.push_back(i - j);
-                j = LPS[j ? j - 1 : 0];
+                occurrences.push_back(i - j);
+                j = LPS[j];
             }else j++;
             i++;
         }else j > 0 ? j = LPS[j - 1] : i++;
     }
 
-    return ocurrences;
+    return occurrences;
 }
 
 void testKMP(){
@@ -63,10 +64,11 @@ void testKMP(){
     for(const auto& [text, pattern] : testCases){
         std::cout<<"Text: "<<text<<std::endl;
         std::cout<<"Pattern: "<<pattern<<std::endl;
-        std::cout<<"Ocurrences: "<<std::endl;
+        std::cout<<"Ocurrences:"<<std::endl;
         
         const std::vector<unsigned int> ocurrences = KMP(pattern, text);
-        std::cout<<"[";
+
+        std::cout<<"[ ";
         for(const auto& ocurrence : ocurrences) std::cout<<ocurrence<<" ";
         std::cout<<"]\n"<<std::endl;
     }
